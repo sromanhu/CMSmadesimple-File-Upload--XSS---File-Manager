@@ -1,34 +1,27 @@
-# CMSmadesimple Stored XSS v2.2.18
+# CMSmadesimple File Upload - XSS v2.2.18
 
 ## Author: (Sergio)
 
-**Description:** Cross Site Scripting vulnerability in CMSmadesimple v.2.2.18 allows a local attacker to execute arbitrary code via a crafted script to the Global Meatadata in the Settings- Global Settings Menu.
+**Description:** File upload vulnerability in CMSmadesimple v.2.2.18 allows a local attacker to upload a pdf file with hidden XSS.
 
-**Attack Vectors:** Scripting A vulnerability in the sanitization of the entry in the Global Meatadata of "Settings- Global Settings Menu" allows injecting JavaScript code that will be executed when the user accesses the web page.
+**Attack Vectors:** A vulnerability in File Manager file upload sanitation allows you to upload a PDF file with hidden XSS.
 
 ---
 
 ### POC:
 
 
-When logging into the panel, we will go to the "Settings- Global Settings Menu." section off General Menu.
+When logging into the panel, we will go to the "Content- File Manager." section off General Menu.
 
-![XSS Global Metadata](https://github.com/sromanhu/CMSmadesimple-Stored-XSS---Global-Settings/assets/87250597/243e7d1f-2bca-4acc-994a-63f926403700)
-
-
-
-We edit that Global Settings Menu that we have created and see that we can inject arbitrary Javascript code in the Global Meatadata field.
+![XSS pdf file upload](https://github.com/sromanhu/CMSmadesimple-File-Upload--XSS---File-Manager/assets/87250597/8274bb28-3e8c-4118-9241-33970ca1e9f3)
 
 
-### XSS Payload:
-
-```js
-<img src=1 onerror=alert("1")
-```
+We upload the PDF file with the hidden XSS and we see that we can execute it and the Reflected XSS appears.
 
 
-In the following image you can see the embedded code that executes the payload in the main web.
-![XSS Global Metadata resultado](https://github.com/sromanhu/CMSmadesimple-Stored-XSS---Global-Settings/assets/87250597/ca7fd137-6975-4826-b1be-8dce3970ebee)
+![XSS pdf file upload resultado](https://github.com/sromanhu/CMSmadesimple-File-Upload--XSS---File-Manager/assets/87250597/d1bbaad5-96a4-4377-a514-3e271b2fc7de)
+
+
 
 
 
@@ -37,4 +30,4 @@ In the following image you can see the embedded code that executes the payload i
 ### Additional Information:
 http://www.cmsmadesimple.org/
 
-https://owasp.org/Top10/es/A03_2021-Injection/
+https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html
